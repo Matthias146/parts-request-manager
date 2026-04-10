@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RequestsService } from '../requests.service';
+import { StatusDisplayPipe } from '../../../shared/pipes/status-display.pipe';
 
 @Component({
   selector: 'app-overview',
-  imports: [DatePipe],
+  imports: [DatePipe, StatusDisplayPipe],
   templateUrl: './overview.html',
   styleUrl: './overview.scss',
 })
