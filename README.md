@@ -1,59 +1,99 @@
-# SpareParts
+# Ersatzteil-Anfragen-Tool
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+Internes Bestellanfragen-System fuer Lager-Mitarbeiter.
 
-## Development server
+Mit diesem Tool koennen Mitarbeiter schnell Ersatzteil-Anfragen erfassen. Sachbearbeiter behalten alle offenen Anfragen im Blick, bearbeiten sie strukturiert und setzen den Bearbeitungsstatus bis zum Abschluss.
 
-To start a local development server, run:
+## Ziel des Projekts
+
+Das System digitalisiert den typischen Anfrageprozess im Lager:
+
+- Mitarbeiter erfassen Anfragen mit:
+  - Teilbezeichnung
+  - Fahrzeug
+  - Prioritaet
+  - Menge
+- Sachbearbeiter sehen alle offenen Anfragen in einer Tabelle.
+- Anfragen koennen gefiltert und durchsucht werden.
+- Der Status wird entlang eines klaren Workflows gepflegt.
+
+## Rollen und Kernfunktionen
+
+### Mitarbeiter
+
+- Neue Anfrage erstellen
+- Pflichtfelder: Teil, Fahrzeug, Prioritaet, Menge
+
+### Sachbearbeiter
+
+- Uebersicht aller offenen und laufenden Anfragen
+- Statuswechsel pro Anfrage
+- Suchen und Filtern (z. B. nach Fahrzeug, Teil, Prioritaet, Status)
+
+## Status-Workflow
+
+Eine Anfrage durchlaeuft folgende Stati:
+
+1. Offen
+2. In Pruefung
+3. Bestellt
+4. Erledigt
+
+## Tech-Stack
+
+- Angular 21
+- TypeScript
+- SCSS
+- RxJS
+- Angular Router
+
+## Lokale Entwicklung
+
+### Voraussetzungen
+
+- Node.js (empfohlen: aktuelle LTS-Version)
+- npm
+
+### Installation
 
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Entwicklungsserver starten
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Die Anwendung ist anschliessend standardmaessig unter `http://localhost:4200` erreichbar.
 
-```bash
-ng generate --help
+## Verfuegbare Skripte
+
+- `npm start` startet den Dev-Server
+- `npm run build` erzeugt ein Production-Build
+- `npm run watch` baut im Watch-Modus
+- `npm test` startet die Tests
+
+## Projektstruktur (Auszug)
+
+```text
+spare_parts/
+	src/
+		app/
+		core/
+    features/
+    shared/
 ```
 
-## Building
+## Aktueller Stand
 
-To build the project run:
+Das Repository enthaelt aktuell ein frisches Angular-Grundgeruest. Die fachlichen Funktionen fuer das Ersatzteil-Anfragen-Tool werden darauf aufbauend implementiert.
 
-```bash
-ng build
-```
+## Geplante naechste Schritte
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Anfrage-Formular fuer Mitarbeiter erstellen
+- Tabellenansicht fuer Sachbearbeiter aufbauen
+- Statuswechsel inklusive Validierung implementieren
+- Filter- und Suchlogik integrieren
+- Optionale Persistenz (API oder lokale Mock-Daten) anbinden
