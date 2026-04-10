@@ -21,7 +21,7 @@
         <td>{{ request.priority }}</td>
         <td>
           <span [class]="'badge badge-' + request.status.replace('_', '-')">{{
-            request.status
+            request.status | statusDisplay
           }}</span>
         </td>
         <td>{{ request.requestedBy }}</td>
