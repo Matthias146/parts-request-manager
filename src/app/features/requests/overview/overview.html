@@ -1,36 +1,52 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Part Name</th>
-      <th>Quantity</th>
-      <th>Vehicle Model</th>
-      <th>Priority</th>
-      <th>Status</th>
-      <th>Requested By</th>
-      <th>Requested At</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (request of requests(); track request.id) {
-      <tr>
-        <td>{{ request.id }}</td>
-        <td>{{ request.partName }}</td>
-        <td>{{ request.quantity }}</td>
-        <td>{{ request.vehicleModel }}</td>
-        <td>{{ request.priority }}</td>
-        <td>
-          <span [class]="'badge badge-' + request.status.replace('_', '-')">{{
-            request.status | statusDisplay
-          }}</span>
-        </td>
-        <td>{{ request.requestedBy }}</td>
-        <td>{{ request.requestedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
-      </tr>
-    } @empty {
-      <tr>
-        <td colspan="8">No requests found.</td>
-      </tr>
-    }
-  </tbody>
-</table>
+<section class="overview">
+  <div class="overview-header">
+    <div>
+      <p class="overview-eyebrow">Requests</p>
+      <h2 class="overview-title">Spare Part Overview</h2>
+    </div>
+    <p class="overview-count">
+      Total: <strong>{{ requests().length }}</strong>
+    </p>
+  </div>
+
+  <div class="table-wrap">
+    <table class="requests-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Part Name</th>
+          <th>Quantity</th>
+          <th>Vehicle Model</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Requested By</th>
+          <th>Requested At</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (request of requests(); track request.id) {
+          <tr>
+            <td class="mono-cell">{{ request.id }}</td>
+            <td>{{ request.partName }}</td>
+            <td>{{ request.quantity }}</td>
+            <td>{{ request.vehicleModel }}</td>
+            <td>
+              <span class="priority-pill">{{ request.priority }}</span>
+            </td>
+            <td>
+              <span [class]="'badge badge-' + request.status.replace('_', '-')">{{
+                request.status | statusDisplay
+              }}</span>
+            </td>
+            <td>{{ request.requestedBy }}</td>
+            <td class="date-cell">{{ request.requestedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td class="empty-row" colspan="8">No requests found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
