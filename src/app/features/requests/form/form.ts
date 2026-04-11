@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { RequestsService } from '../requests.service';
-import { Priority, RequestStatus } from '../../../core/models/spare-part-request.model';
+import { Priority } from '../../../core/models/spare-part-request.model';
 
 @Component({
   selector: 'app-form',
