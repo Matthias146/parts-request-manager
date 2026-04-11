@@ -1,1 +1,91 @@
-<p>form works!</p>
+<form class="request-form" [formGroup]="requestForm" (ngSubmit)="submit()">
+	<div class="form-header">
+		<div>
+			<p class="eyebrow">New Spare Part Request</p>
+			<h2>Create request</h2>
+		</div>
+		<div class="form-stats">
+			<p>Total requests: <strong>{{ requests().length }}</strong></p>
+			<p>Next ID: <strong>{{ requests().length ? requests()[requests().length - 1].id + 1 : 1 }}</strong></p>
+		</div>
+	</div>
+
+	@if (submitError()) {
+		<p class="submit-error">{{ submitError() }}</p>
+	}
+
+	<div class="form-grid">
+		<div class="field-group">
+		<label for="partName">Part Name</label>
+		<input id="partName" type="text" formControlName="partName" />
+		@if (hasError('partName', 'required')) {
+			<p class="field-error">Part name is required.</p>
+		}
+		@if (hasError('partName', 'minlength')) {
+			<p class="field-error">Part name must be at least 2 characters long.</p>
+		}
+	</div>
+
+	<div class="field-group">
+		<label for="quantity">Quantity</label>
+		<input id="quantity" type="number" formControlName="quantity" min="1" />
+		@if (hasError('quantity', 'required')) {
+			<p class="field-error">Quantity is required.</p>
+		}
+		@if (hasError('quantity', 'min')) {
+			<p class="field-error">Quantity must be at least 1.</p>
+		}
+	</div>
+
+	<div class="field-group">
+		<label for="vehicleModel">Vehicle Model</label>
+		<input id="vehicleModel" type="text" formControlName="vehicleModel" />
+		@if (hasError('vehicleModel', 'required')) {
+			<p class="field-error">Vehicle model is required.</p>
+		}
+		@if (hasError('vehicleModel', 'minlength')) {
+			<p class="field-error">Vehicle model must be at least 2 characters long.</p>
+		}
+	</div>
+
+	<div class="field-group">
+		<label for="priority">Priority</label>
+		<select id="priority" formControlName="priority">
+			@for (priority of priorities; track priority) {
+				<option [value]="priority">{{ priority }}</option>
+			}
+		</select>
+		@if (hasError('priority', 'required')) {
+			<p class="field-error">Priority is required.</p>
+		}
+	</div>
+
+	<div class="field-group">
+		<label for="status">Status</label>
+		<select id="status" formControlName="status">
+			@for (status of statuses; track status) {
+				<option [value]="status">{{ status }}</option>
+			}
+		</select>
+		@if (hasError('status', 'required')) {
+			<p class="field-error">Status is required.</p>
+		}
+	</div>
+
+	<div class="field-group field-group-full">
+		<label for="requestedBy">Requested By</label>
+		<input id="requestedBy" type="text" formControlName="requestedBy" />
+		@if (hasError('requestedBy', 'required')) {
+			<p class="field-error">Requester name is required.</p>
+		}
+		@if (hasError('requestedBy', 'minlength')) {
+			<p class="field-error">Requester name must be at least 2 characters long.</p>
+		}
+	</div>
+	</div>
+
+	<div class="form-actions">
+		<button type="submit">Create Request</button>
+	</div>
+</form>
+
