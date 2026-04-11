@@ -17,14 +17,12 @@ export class Form {
   readonly submitError = signal('');
 
   readonly priorities: Priority[] = ['low', 'medium', 'high'];
-  readonly statuses: RequestStatus[] = ['open', 'under_examination', 'ordered', 'closed'];
 
   readonly requestForm = this.formBuilder.nonNullable.group({
     partName: ['', [Validators.required, Validators.minLength(2)]],
     quantity: [1, [Validators.required, Validators.min(1)]],
     vehicleModel: ['', [Validators.required, Validators.minLength(2)]],
     priority: ['medium' as Priority, [Validators.required]],
-    status: ['open' as RequestStatus, [Validators.required]],
     requestedBy: ['', [Validators.required, Validators.minLength(2)]],
   });
 
@@ -56,7 +54,6 @@ export class Form {
       quantity: 1,
       vehicleModel: '',
       priority: 'medium',
-      status: 'open',
       requestedBy: '',
     });
   }
