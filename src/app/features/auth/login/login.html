@@ -1,0 +1,46 @@
+<section class="login-page">
+  <div class="login-panel">
+    <div class="login-intro">
+      <p class="login-eyebrow">Secure Access</p>
+      <h1 class="login-title">Sign in to Spare Parts Hub</h1>
+      <p class="login-copy">
+        Use your account credentials to manage spare part requests and procurement workflows.
+      </p>
+    </div>
+
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submit()">
+      @if (submitError()) {
+        <p class="login-message login-message-error">{{ submitError() }}</p>
+      }
+
+      <div class="field-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" formControlName="username" autocomplete="username" />
+        @if (hasError('username', 'required')) {
+          <p class="field-error">Username is required.</p>
+        }
+        @if (hasError('username', 'minlength')) {
+          <p class="field-error">Username must be at least 3 characters long.</p>
+        }
+      </div>
+
+      <div class="field-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+        />
+        @if (hasError('password', 'required')) {
+          <p class="field-error">Password is required.</p>
+        }
+        @if (hasError('password', 'minlength')) {
+          <p class="field-error">Password must be at least 6 characters long.</p>
+        }
+      </div>
+
+      <button class="login-submit" type="submit">Sign In</button>
+    </form>
+  </div>
+</section>
