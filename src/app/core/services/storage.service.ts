@@ -303,7 +303,7 @@ export class StorageService {
   }
 
   private isRole(role: unknown): role is Role {
-    return role === 'admin' || role === 'clerk' || role === 'employees';
+    return role === 'admin' || role === 'clerk' || role === 'employee';
   }
 
   private isValidUsername(username: unknown): username is string {
