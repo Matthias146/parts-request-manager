@@ -1,0 +1,26 @@
+<div class="shell">
+  <header class="shell-header">
+    <div class="shell-branding">
+      <p class="shell-eyebrow">B2B Operations</p>
+      <h1 class="shell-title">{{ appName() }}</h1>
+    </div>
+
+    <nav class="shell-nav" aria-label="Primary navigation">
+      <a class="shell-nav-link" routerLink="/" routerLinkActive="is-active">Overview</a>
+      <a class="shell-nav-link" routerLink="/new" routerLinkActive="is-active">New Request</a>
+    </nav>
+  </header>
+
+  <main class="shell-main">
+    <div class="shell-content container">
+      <router-outlet />
+    </div>
+  </main>
+
+  <footer class="shell-footer">
+    <div class="shell-footer-inner container">
+      <p>Spare Parts Hub</p>
+      <p>Central request management for procurement teams.</p>
+    </div>
+  </footer>
+</div>
