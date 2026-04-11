@@ -46,7 +46,7 @@ export class Form {
       quantity: value.quantity,
       vehicleModel: value.vehicleModel.trim(),
       priority: value.priority,
-      status: value.status,
+      status: 'open',
       requestedBy: value.requestedBy.trim(),
       requestedAt: new Date(),
     });
@@ -65,5 +65,4 @@ export class Form {
     const control = this.requestForm.controls[controlName];
     return control.touched && control.hasError(errorName);
   }
-
 }
