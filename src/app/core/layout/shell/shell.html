@@ -6,8 +6,13 @@
     </div>
 
     <nav class="shell-nav" aria-label="Primary navigation">
-      <a class="shell-nav-link" routerLink="/" routerLinkActive="is-active">Overview</a>
-      <a class="shell-nav-link" routerLink="/new" routerLinkActive="is-active">New Request</a>
+      <a class="shell-nav-link" routerLink="/requests/overview" routerLinkActive="is-active"
+        >Overview</a
+      >
+      <a class="shell-nav-link" routerLink="/requests/new" routerLinkActive="is-active"
+        >New Request</a
+      >
+      <a class="shell-nav-link" (click)="logout()">Logout</a>
     </nav>
   </header>
 
