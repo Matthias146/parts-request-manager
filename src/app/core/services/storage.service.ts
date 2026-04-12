@@ -1,5 +1,6 @@
+import { ENV_ADMIN } from './../../features/auth/models/.env_user';
 import { computed, Injectable, signal } from '@angular/core';
-import { Role, User } from '../../features/auth/models/user.model';
+import { Role, ROLES, User } from '../../features/auth/models/user.model';
 
 interface PersistedAuthState {
   version: 1;
@@ -162,10 +163,10 @@ export class StorageService {
 
   private createDefaultAdmin(): User {
     return {
-      id: 1,
-      username: 'admin',
-      password: '123456',
-      role: 'admin',
+      id: ENV_ADMIN.id,
+      username: ENV_ADMIN.username,
+      password: ENV_ADMIN.password,
+      role: ENV_ADMIN.role,
     };
   }
 
@@ -303,7 +304,7 @@ export class StorageService {
   }
 
   private isRole(role: unknown): role is Role {
-    return role === 'admin' || role === 'clerk' || role === 'employee';
+    return ROLES.includes(role as Role);
   }
 
   private isValidUsername(username: unknown): username is string {
