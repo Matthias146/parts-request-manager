@@ -17,7 +17,15 @@ Das System digitalisiert den typischen Anfrageprozess im Lager:
 - Anfragen koennen gefiltert und durchsucht werden.
 - Der Status wird entlang eines klaren Workflows gepflegt.
 
-## Rollen und Kernfunktionen
+### Admin-Konfiguration
+
+Die Admin-Zugangsdaten werden lokal konfiguriert und nicht versioniert.
+
+1. Beispieldatei kopieren:
+
+cp src/app/features/auth/models/.env_user.example.ts src/app/features/auth/models/.env_user.ts
+
+2. `.env_user.ts` mit eigenen Zugangsdaten befüllen.
 
 ### Mitarbeiter
 

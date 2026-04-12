@@ -37,6 +37,7 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+src/app/features/auth/models/.env_user.ts
 
 # System files
 .DS_Store
